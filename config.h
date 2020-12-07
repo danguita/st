@@ -168,6 +168,10 @@ static unsigned int defaultattr = 11;
  */
 static uint forcemousemod = ShiftMask;
 
+static char *openurlcmd[] = { "/bin/sh", "-c",
+  "xurls | dmenu -l 10 -w $WINDOWID | xargs -r xdg-open",
+  "externalpipe", NULL };
+
 /*
  * Internal mouse shortcuts.
  * Beware that overloading Button1 will disable the selection.
@@ -199,6 +203,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+	{ TERMMOD,              XK_U,           externalpipe,   {.v = openurlcmd} },
 };
 
 /*
